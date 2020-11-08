@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            display: block;
+        }
+    </style>
+    <script>
+   
+        function fun1() {
+            let body = document.querySelector('body');
+            let reg = /(<a.*href=['"])(http)(:\/\/)(www\.)?(\w+)/gi;
+            body.innerHTML = body.innerHTML.replace(reg, (v, ...args) => {
+                console.log(v);
+                console.log(args);
+                args[1] += "s";
+                args[3] = args[3] || "www.";
+                return args.splice(0, 5).join('');
+            })
+        }
+
+        function fun2(){
+            let reg = /Damons7/;
+            let str = "+=Damons7=+";
+            console.log(str.replace(reg, ""));  //将Damons7替换成空字符，即变成+==+
+            console.log(str.replace(reg, "$`"));//将Damons7换成Damons7前面的字符串，即+=+==+
+            console.log(str.replace(reg, "$&"));//$&即还是reg的内容，将Damons7换成Damons7，即还是									   //+=Damons7=+
+            console.log(str.replace(reg, "$&123"));//将Damons7换成Damons7，同时加上123即									   //+=Damons7123=+
+            console.log(str.replace(reg,"$'"));
+        }
+    </script>
+</head>
+
+<body>
+    <a id="test1" href="http://www.baidu.com">测试1</a>
+    <a class="test2" href="http://www.aaa.com">测试2</a>
+    <a href="http://bbb.com">测试3</a>
+    <h4>http://www.dd.com</h4>
+    <h4>http://mm.com</h4>
+
+
+    <div>
+        <button onclick="fun1()">将页面的a标签的href里：http换成https，没有www.的加上www.</button>
+        <button onclick="fun2()">看下$`  $'  $&是啥</button>
+    </div>
+</body>
+
+</html>
