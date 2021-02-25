@@ -1,0 +1,19 @@
+{
+  "name": "mykoa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node ./module/db.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.0.0",
+    "mongoose": "^5.11.17"
+  }
+}
